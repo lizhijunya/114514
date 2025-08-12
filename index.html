@@ -587,6 +587,7 @@ function initValine() {
                 el: '#vcomments',
                 appId: '667dsj4EpJkqNlc49PRsYIXv-MdYXbMMI', // 请替换为您的LeanCloud App ID
                 appKey: 'lH1xaq5l8bOaNRyfmoMUFXRB', // 请替换为您的LeanCloud App Key
+                serverURLs: 'https://api.114514.fun', // 新的LeanCloud API地址
                 placeholder: '欢迎留下您的足迹...',
                 avatar: 'identicon',
                 pageSize: 10,
@@ -606,12 +607,13 @@ function initValine() {
                      <h4 style="color: #e74c3c; margin-bottom: 15px;">⚠️ 评论系统配置错误</h4>
                      <p style="color: #666; margin-bottom: 15px;">请按以下步骤配置Valine评论系统：</p>
                      <ol style="text-align: left; max-width: 500px; margin: 0 auto; color: #555;">
-                         <li>访问 <a href="https://console.leancloud.app/" target="_blank" style="color: #70c3ff;">LeanCloud控制台</a> 注册账号</li>
-                         <li>创建新应用，选择开发版（免费）</li>
-                         <li>进入应用设置 → 应用凭证，复制App ID和App Key</li>
-                         <li>将代码中的YOUR_LEANCLOUD_APP_ID和YOUR_LEANCLOUD_APP_KEY替换为真实值</li>
-                         <li>在应用设置 → 安全中心，添加您的域名到Web安全域名</li>
-                     </ol>
+                          <li>访问 <a href="https://console.leancloud.app/" target="_blank" style="color: #70c3ff;">LeanCloud控制台</a> 注册账号</li>
+                          <li>创建新应用，选择开发版（免费）</li>
+                          <li>进入应用设置 → 应用凭证，复制App ID和App Key</li>
+                          <li>将代码中的YOUR_LEANCLOUD_APP_ID和YOUR_LEANCLOUD_APP_KEY替换为真实值</li>
+                          <li>将serverURLs中的"APPID前八位"替换为您的App ID的前8位字符</li>
+                          <li>在应用设置 → 安全中心，添加您的域名到Web安全域名</li>
+                      </ol>
                      <p style="color: #999; margin-top: 15px; font-size: 14px;">配置完成后刷新页面即可使用评论功能</p>
                  </div>
              `;
