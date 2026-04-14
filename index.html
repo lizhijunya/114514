@@ -358,7 +358,7 @@ img {border: none;}
 /* 拉伸弹动效果 */
 @keyframes rubberBand {0% {transform: scaleX(1)} 30% {transform: scale3d(1.25, .75, 1)}40% {transform: scale3d(.75, 1.25, 1)}50% {transform: scale3d(1.15, .85, 1)}65% {transform: scale3d(.95, 1.05, 1)}75% {transform: scale3d(1.05, .95, 1)}to {transform: scaleX(1)}}
 
-/* Valine评论系统样式 */
+/* Twikoo 评论区域样式 */
 .comment-board {
     background: #fff;
     border-radius: 8px;
@@ -366,67 +366,12 @@ img {border: none;}
     padding: 30px;
     margin-bottom: 30px;
 }
-
-/* Valine自定义样式 */
-#vcomments {
-    font-family: Microsoft Yahei, "微软雅黑", "Helvetica Neue", Helvetica, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
-}
-
-.v .vwrap {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.v .vwrap:focus-within {
-    border-color: #70c3ff;
-}
-
-.v .vbtn {
-    background: #70c3ff;
-    color: white;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-}
-
-.v .vbtn:hover {
-    background: #5ba8e6;
-}
-
-.v .vcard {
-    border: none;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    border-radius: 6px;
-    margin-bottom: 15px;
-}
-
-.v .vcard .vh {
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.v .vcard .vhead .vnick {
-    color: #70c3ff;
-    font-weight: 500;
-}
-
-.v .vcard .vhead .vsys {
-    background: #70c3ff;
-    color: white;
-    border-radius: 3px;
-    padding: 2px 6px;
-    font-size: 12px;
-}
     </style>
 
 </head>
 <body>
 
-
 <header class="header">
-    <!-- 动画展示区域 -->
     <div id="victor-container"><div id="victor-output"></div></div>
     
     <div class="welcome">
@@ -434,7 +379,6 @@ img {border: none;}
         <p style="margin-top: 20px; font-size: 18px; color: #f0f0f0; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); line-height: 1.6;">每个homo都会在浏览器输入奇怪的数字<br>野兽先辈的小屋</p>
     </div>
     
-    <!--向下滚动提示-->
     <a class="scroll-down-tips" href="#product" onclick="$('html, body').animate({scrollTop: $('.header').height()}, '500');return false;">
         <i class="fa fa-angle-double-down" aria-hidden="true"></i>
         向下滚动
@@ -443,7 +387,7 @@ img {border: none;}
 
 <div class="container">
 
-<!-- Valine评论系统 -->
+<!-- Twikoo 评论区 -->
 <section class="section">
     <h3 class="mk-sub-title">
         <span>Comments</span>
@@ -454,7 +398,7 @@ img {border: none;}
     <p class="mk-title-describe">欢迎留下您的足迹</p>
     
     <div class="comment-board">
-        <div id="vcomments"></div>
+        <div id="twikoo"></div>
     </div>
 </section>
 
@@ -549,14 +493,7 @@ img {border: none;}
     </a>
 </div>
 
-
-
 </div>
-
-</section>
-
-<section class="section">
-
 </section>
 
 </div>
@@ -564,9 +501,7 @@ img {border: none;}
 <footer class="footer">
     <div class="web-record">
         © 2020 <a href="https://xiaolii.com">XIAOLII</a> All rights reserved
-		 	</div>
-
-
+    </div>
 </footer>
 
 <!-- 返回顶部 -->
@@ -574,63 +509,13 @@ img {border: none;}
 
 <!-- jq -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-<!-- Valine评论系统 -->
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<!-- Twikoo 核心 JS -->
+<script src="https://cdn.staticfile.org/twikoo/1.6.39/twikoo.all.min.js"></script>
 
 <script>
-// Valine评论系统初始化
-function initValine() {
-    if (typeof Valine !== 'undefined') {
-        console.log('正在初始化Valine评论系统...');
-        try {
-            new Valine({
-                el: '#vcomments',
-                appId: '667dsj4EpJkqNlc49PRsYIXv-MdYXbMMI', // 请替换为您的LeanCloud App ID
-                appKey: 'lH1xaq5l8bOaNRyfmoMUFXRB', // 请替换为您的LeanCloud App Key
-                serverURLs: 'https://api.114514.fun', // 新的LeanCloud API地址
-                placeholder: '欢迎留下您的足迹...',
-                avatar: 'identicon',
-                pageSize: 10,
-                visitor: true,
-                highlight: true,
-                recordIP: true,
-                enableQQ: true,
-                requiredFields: ['nick', 'mail'],
-                lang: 'zh-CN',
-                path: window.location.pathname
-            });
-            console.log('Valine评论系统初始化成功！');
-        } catch (error) {
-             console.error('Valine初始化失败:', error);
-             document.getElementById('vcomments').innerHTML = `
-                 <div style="padding: 30px; text-align: center; background: #f8f9fa; border-radius: 8px; margin: 20px 0;">
-                     <h4 style="color: #e74c3c; margin-bottom: 15px;">⚠️ 评论系统配置错误</h4>
-                     <p style="color: #666; margin-bottom: 15px;">请按以下步骤配置Valine评论系统：</p>
-                     <ol style="text-align: left; max-width: 500px; margin: 0 auto; color: #555;">
-                          <li>访问 <a href="https://console.leancloud.app/" target="_blank" style="color: #70c3ff;">LeanCloud控制台</a> 注册账号</li>
-                          <li>创建新应用，选择开发版（免费）</li>
-                          <li>进入应用设置 → 应用凭证，复制App ID和App Key</li>
-                          <li>将代码中的YOUR_LEANCLOUD_APP_ID和YOUR_LEANCLOUD_APP_KEY替换为真实值</li>
-                          <li>将serverURLs中的"APPID前八位"替换为您的App ID的前8位字符</li>
-                          <li>在应用设置 → 安全中心，添加您的域名到Web安全域名</li>
-                      </ol>
-                     <p style="color: #999; margin-top: 15px; font-size: 14px;">配置完成后刷新页面即可使用评论功能</p>
-                 </div>
-             `;
-         }
-    } else {
-        console.error('Valine脚本未加载成功');
-        document.getElementById('vcomments').innerHTML = '<div style="padding: 20px; text-align: center; color: #999;">评论系统加载中，请稍候...</div>';
-        // 延迟重试
-        setTimeout(initValine, 2000);
-    }
-}
-
 $(function() {
-    // 页面加载完毕后固定页头高度，防止在某些自动隐藏工具栏的移动浏览器上出现页面抖动现象
     $(".header").height($(window).height());
     
-	// 监听滚动变化
     $(window).scroll(function() {
         if($(window).scrollTop() < 300) {
             $(".mk-uptop").removeClass("show");
@@ -639,19 +524,23 @@ $(function() {
         }
     });
     
-    // 返回顶部
     $(".mk-uptop").click(function(){
-		$("html, body").animate({scrollTop:0}, "normal"); 
-		return false; 
-	});
+        $("html, body").animate({scrollTop:0}, "normal"); 
+        return false; 
+    });
 
-    // 初始化Valine评论系统
-    initValine();
+    // ========== Twikoo 评论初始化 ==========
+    twikoo.init({
+        envId: "https://candid-cranachan-e3cabe.netlify.app/.netlify/functions/twikoo",
+        el: "#twikoo",
+        path: window.location.pathname,
+        lang: "zh-CN",
+        placeholder: "欢迎留下您的足迹...",
+        avatar: "identicon"
+    });
 
     console.info('Version 2.0, Designed by XIAOLII.COM.');
 });
-
 </script>
-
 </body>
 </html>
