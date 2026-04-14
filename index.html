@@ -531,15 +531,14 @@ $(function() {
 
     // ========== Twikoo 评论初始化 ==========
     twikoo.init({
-        envId: "https://candid-cranachan-e3cabe.netlify.app/.netlify/functions/twikoo",
-        el: "#twikoo",
-        path: window.location.pathname,
-        lang: "zh-CN",
-        placeholder: "欢迎留下您的足迹...",
-        avatar: "identicon"
-    // 开启内置行为验证（点一下就通过，防机器）
-        verify: true 
-    });
+  envId: "https://candid-cranachan-e3cabe.netlify.app/.netlify/functions/twikoo",
+  el: "#twikoo",
+  path: window.location.pathname,
+  lang: "zh-CN",
+  placeholder: "欢迎留下您的足迹...",
+  verify: true,  // 内置验证
+  avatar: "identicon"
+});
 
     console.info('Version 2.0, Designed by XIAOLII.COM.');
 });
